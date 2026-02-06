@@ -12,7 +12,7 @@ export default function BrowseEntries({
   entries,
   onDeleteEntry,
 }: BrowseEntriesProps) {
-  const groupedEntries = groupByCity(entries);
+  const groupedEntries: Record<string, typeof entries> = groupByCity(entries);
   const cities = Object.keys(groupedEntries).sort();
 
   if (cities.length === 0) {
@@ -41,7 +41,7 @@ export default function BrowseEntries({
             📍 {city}
           </h3>
           <ul style={{ listStyle: "none" }}>
-            {(groupedEntries[city] || []).map((entry) => (
+            {(groupedEntries[city] ?? []).map((entry) => (
               <li
                 key={entry.id}
                 style={{
