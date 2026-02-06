@@ -5,7 +5,7 @@ export default function Header() {
     <header
       style={{
         background: "rgba(0, 0, 0, 0.3)",
-        backdrop: "blur(10px)",
+        backdropFilter: "blur(10px)",
         color: "white",
         padding: "30px 20px",
         textAlign: "center",

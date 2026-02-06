@@ -30,7 +30,7 @@ export function buildItinerary(
     budget,
     createdAt: Date.now(),
     stops: chosen.map((entry, i) => ({
-      time: chosenTimes[i],
+      time: chosenTimes[i] || "",
       entry,
       rationale: "Curated randomness — trust the chaos.",
     })),
