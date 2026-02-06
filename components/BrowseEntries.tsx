@@ -41,7 +41,7 @@ export default function BrowseEntries({
             📍 {city}
           </h3>
           <ul style={{ listStyle: "none" }}>
-            {groupedEntries[city]?.map((entry) => (
+            {(groupedEntries[city] || []).map((entry) => (
               <li
                 key={entry.id}
                 style={{
