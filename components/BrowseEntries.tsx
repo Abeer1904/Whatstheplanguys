@@ -12,6 +12,7 @@ export default function BrowseEntries({
   entries,
   onDeleteEntry,
 }: BrowseEntriesProps) {
+  // Group entries by city
   const groupedEntries: Record<string, typeof entries> = groupByCity(entries);
   const cities = Object.keys(groupedEntries).sort();
 
