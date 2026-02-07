@@ -75,3 +75,36 @@ export function getCategoryEmoji(category: string): string {
   };
   return emojiMap[category] || "📍";
 }
+
+// Area clustering for Phuket
+export const AREA_CLUSTERS: Record<string, string[]> = {
+  Patong: ["Patong", "Bangla", "Malin Plaza", "Freedom Beach"],
+  "Phuket Old Town": ["Phuket Town", "Old Town", "Dibuk", "Talad Yai"],
+  "South Phuket": [
+    "Chalong",
+    "Rawai",
+    "Nai Harn",
+    "Ao Sane",
+    "Big Buddha",
+    "Wat Chalong",
+  ],
+  "Karon–Kata": ["Karon", "Kata", "Nui Beach"],
+  "Kamala–Surin": ["Kamala", "Laem Sing"],
+  "North Phuket": ["Nai Yang", "Mai Khao", "Thalang"],
+};
+
+const normalize = (s?: string) => (s || "").toLowerCase().trim();
+
+export function areaKeyFor(entry: { area?: string; neighborhood?: string }): string | null {
+  const a = normalize(entry.area);
+  if (a) return entry.area!;
+
+  const n = normalize(entry.neighborhood);
+  if (!n) return null;
+
+  // map neighborhood text into a cluster key
+  for (const [cluster, terms] of Object.entries(AREA_CLUSTERS)) {
+    if (terms.some((t) => n.includes(normalize(t)))) return cluster;
+  }
+  return null;
+}

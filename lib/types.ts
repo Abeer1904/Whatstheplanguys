@@ -16,6 +16,7 @@ export type Entry = {
   title: string;
   category: Category;
   neighborhood?: string;
+  area?: string;
   price?: Price;
   tags: string[];
   notes?: string;
